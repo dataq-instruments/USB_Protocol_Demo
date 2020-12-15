@@ -21,9 +21,6 @@ From Device Manager, find out the COM port of the device connected to
  1)Use Windows Device Manager to find out the COM port for your device and enter it to COM Port text box <br/>
  2)Select the appropriate srate and matching ps values <br/>
  3)Click Run to start it<br/>
- 
- ![alt text](https://www.dataq.com/resources/repository/ethernet.gif "ScreenCapture by LICECap")
- 
- Read the protocol to find out more, and exam the error codes
+ 4)To debug, please read the protocol to find out more, and exam the error codes
  
  
