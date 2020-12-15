@@ -18,6 +18,7 @@ namespace CDCRawSample
         static int maxAvailableBytes = 0;
         static string mysrate;
         static string myps;
+        static bool acq = false;
 
         public Form1()
         {
@@ -51,13 +52,14 @@ namespace CDCRawSample
                 Status.Text = "Failed to open the port";
                 return;
             }
+            if (readThread.IsAlive == false)
+                readThread.Start();
 
             timer1.Enabled = true;
-            if (readThread.IsAlive==false)
-            readThread.Start();
 
             Setup();
 
+            acq = true;
         }
 
         private static void Read()
@@ -65,23 +67,39 @@ namespace CDCRawSample
             int i;
             while (true)
             {
-                try
+                if (acq)
                 {
-                    AvailableBytes = serialPort.BytesToRead;
-                    if (AvailableBytes > maxAvailableBytes) maxAvailableBytes = AvailableBytes;
-                     AvailableBytes = AvailableBytes- (AvailableBytes % 2);
-                }
-                catch
-                {
-                    AvailableBytes = 0;
-                }
+                    try
+                    {
+                        AvailableBytes = serialPort.BytesToRead;
+                        if (AvailableBytes > maxAvailableBytes) maxAvailableBytes = AvailableBytes;
+                        AvailableBytes = AvailableBytes - (AvailableBytes % 2);
+                    }
+                    catch
+                    {
+                        AvailableBytes = 0;
+                    }
 
-                if (AvailableBytes > 0)
+                    if (AvailableBytes > 0)
+                    {
+                        if (AvailableBytes > (ADCBuffer.Length - headADCBuffer)) AvailableBytes = ADCBuffer.Length - headADCBuffer;
+                        i = serialPort.Read(ADCBuffer, headADCBuffer, AvailableBytes);
+                        headADCBuffer = headADCBuffer + i;
+                        if (headADCBuffer >= ADCBuffer.Length) headADCBuffer = 0;
+                    }
+                }
+                else
                 {
-                    if (AvailableBytes > (ADCBuffer.Length - headADCBuffer)) AvailableBytes = ADCBuffer.Length - headADCBuffer;
-                    i=serialPort.Read(ADCBuffer, headADCBuffer, AvailableBytes);
-                    headADCBuffer = headADCBuffer + i;
-                    if (headADCBuffer >= ADCBuffer.Length) headADCBuffer = 0;
+                    /*We just dump ALL command echo in this demo*/
+                    try
+                    {
+                        AvailableBytes = serialPort.BytesToRead;
+                        serialPort.Read(ADCBuffer, 0, AvailableBytes);
+                    }
+                    catch
+                    {
+                        AvailableBytes = 0;
+                    }
                 }
             }
         }
@@ -130,14 +148,13 @@ namespace CDCRawSample
                 Int16[,] PlotData = new Int16[1, availablescan];
 
                 Int16 n;
-                int takeindex;
 
-                for (j = 0, takeindex=tailADCBuffer; j < availablescan; j++)
+                for (j = 0; j < availablescan; j++)
                 {
-                    n = BitConverter.ToInt16(ADCBuffer, takeindex);
-                    takeindex = takeindex + 2;
-                    PlotData[0, j] = ADCBuffer[takeindex];
-                    if (takeindex >= ADCBuffer.Length) takeindex = 0;
+                    n = BitConverter.ToInt16(ADCBuffer, tailADCBuffer);
+                    tailADCBuffer = tailADCBuffer + 2;
+                    PlotData[0, j] = n;
+                    if (tailADCBuffer >= ADCBuffer.Length) tailADCBuffer = 0;
                 }
 
 
