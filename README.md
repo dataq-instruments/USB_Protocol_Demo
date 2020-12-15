@@ -4,7 +4,9 @@
 
 **Prerequisites**:
 
-Install XChart, which can be done by installing Windaq Add On (https://www.dataq.com/products/windaq/add_ons/index.htm).
+This example uses Xchart to plot the waveform, which is installed when you install WinDaq addons (https://www.dataq.com/products/windaq/add_ons/index.htm) to your PC. 
+  
+ For more info regarding the features of XChart, please refer to http://ultimaserial.com/XChart.html
 
 Turn 21xx/11xx/41xx/47xx into CDC mode: plug the device to USB port, if the LED already blinks Yellow, stop, you are already in CDC mode. If not, once the LED turns blinking Green, push and hold the button immediately (within 5 second time frame), the LED should turn white, hold until LED turns Red, then release the button, now the LED will blink yellow to indicate CDC mode. If you need to exit CDC mode, repeate the same action and a green blinking LED will indicate LibUSB mode.
 
@@ -14,8 +16,7 @@ From Device Manager, find out the COM port of the device connected to
 
   For protocol, please refer to  https://www.dataq.com/resources/pdfs/misc/Dataq-Instruments-Protocol.pdf
  
-  For more info regarding the features of XChart, please refer to http://ultimaserial.com/XChart.html
- 
+   
 **Run it**:
 
  1)Use Windows Device Manager to find out the COM port for your device and enter it to COM Port text box <br/>
