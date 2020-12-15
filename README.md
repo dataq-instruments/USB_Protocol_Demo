@@ -24,3 +24,6 @@ From Device Manager, find out the COM port of the device connected to
  4)To debug, please read the protocol to find out more, and exam the error codes
  
  
+![alt text](https://www.dataq.com/resources/repository/rawcdc.gif "ScreenCapture by LICECap")
+ 
+ 
