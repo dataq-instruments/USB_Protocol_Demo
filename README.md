@@ -1,6 +1,6 @@
 # USB_Protocol_demo
 
- It demonstrate how to use protocol to set up and acquire data then display in a chart. 
+ It demonstrate how to use protocol to set up and acquire data then display in a chart. It applies to DI-1100, DI-1110, DI-1120, DI-2108, DI-2008, DI-4108, DI-4208, DI-4718B, and DI-4730 USB
 
 **Prerequisites**:
 
