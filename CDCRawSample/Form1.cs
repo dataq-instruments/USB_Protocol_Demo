@@ -173,6 +173,7 @@ namespace CDCRawSample
                 WriteRes("stop\r");
                 Thread.Sleep(200);
                 serialPort.Close();
+                readThread.Abort();
             }
             catch { };
         }
