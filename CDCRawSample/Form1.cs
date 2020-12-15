@@ -170,10 +170,23 @@ namespace CDCRawSample
         {
             try
             {
+                acq = false;
                 WriteRes("stop\r");
                 Thread.Sleep(200);
                 serialPort.Close();
                 readThread.Abort();
+            }
+            catch { };
+        }
+
+        private void stop_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                acq = false;
+                WriteRes("stop\r");
+                Thread.Sleep(200);
+                serialPort.Close();
             }
             catch { };
         }

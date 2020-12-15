@@ -40,6 +40,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.ps = new System.Windows.Forms.TextBox();
             this.axXChart1 = new AxXCHARTLib.AxXChart();
+            this.stop = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.axXChart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,9 +63,9 @@
             // 
             // run
             // 
-            this.run.Location = new System.Drawing.Point(682, 9);
+            this.run.Location = new System.Drawing.Point(602, 9);
             this.run.Name = "run";
-            this.run.Size = new System.Drawing.Size(58, 19);
+            this.run.Size = new System.Drawing.Size(58, 29);
             this.run.TabIndex = 2;
             this.run.Text = "Run";
             this.run.UseVisualStyleBackColor = true;
@@ -127,11 +128,22 @@
             this.axXChart1.Size = new System.Drawing.Size(723, 371);
             this.axXChart1.TabIndex = 9;
             // 
+            // stop
+            // 
+            this.stop.Location = new System.Drawing.Point(679, 8);
+            this.stop.Name = "stop";
+            this.stop.Size = new System.Drawing.Size(60, 30);
+            this.stop.TabIndex = 10;
+            this.stop.Text = "Stop";
+            this.stop.UseVisualStyleBackColor = true;
+            this.stop.Click += new System.EventHandler(this.stop_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(761, 450);
+            this.Controls.Add(this.stop);
             this.Controls.Add(this.axXChart1);
             this.Controls.Add(this.ps);
             this.Controls.Add(this.label3);
@@ -162,6 +174,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox ps;
         private AxXCHARTLib.AxXChart axXChart1;
+        private System.Windows.Forms.Button stop;
     }
 }
 
