@@ -22,7 +22,8 @@ From Device Manager, find out the COM port of the device connected to
  2)Select the appropriate srate and matching ps values <br/>
  3)Click Run to start it<br/>
  4)You can drag the waveform up and down, and use the mouse wheel to zoom in and out <br/>
- 5)To debug, please read the protocol to find out more, and exam the error codes
+ 5)To debug, please read the protocol to find out more, and exam the error codes<br/>
+ 6)Due to USB COM port's bandwidth, one should limit the throughput rate to 30K samples per seconds
  
  
 ![alt text](https://www.dataq.com/resources/repository/rawcdc.gif "ScreenCapture by LICECap")
