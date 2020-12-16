@@ -125,7 +125,7 @@ namespace CDCRawSample
             WriteRes("srate "+mysrate+ "\r");
             WriteRes("ps "+ myps+"\r");
 
-            WriteRes("dec 1\r");
+            WriteRes("dec 10\r");
             WriteRes("deca 1\r");
 
             Thread.Sleep(500); //So that we don't need to separate echo with real data
