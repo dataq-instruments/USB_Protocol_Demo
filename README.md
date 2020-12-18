@@ -4,6 +4,8 @@
 
 **Prerequisites**:
 
+Firmware 1.35 is recommended. Earlier version of firmware may not work properly at higher sample rate
+
 Understand the protocol, please refer to  https://www.dataq.com/resources/pdfs/misc/Dataq-Instruments-Protocol.pdf
  
 This example uses Xchart to plot the waveform, which is installed when you install WinDaq addons (https://www.dataq.com/products/windaq/add_ons/index.htm) to your PC. 
@@ -13,9 +15,6 @@ Turn 21xx/11xx/41xx/47xx into CDC mode: plug the device to USB port, if the LED 
 From Device Manager, find out the COM port of the device connected to
 
 ![alt text](https://www.dataq.com/resources/repository/matlab_devicemanager.png)
-
-Firmware 1.35 is recommended. Earlier version of firmware may not work properly at higher sample rate
-
 
    
 **Run it**:
