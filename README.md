@@ -4,7 +4,7 @@
 
 **Prerequisites**:
 
-Firmware 1.35 is recommended. Earlier version of firmware may not work properly at higher sample rate
+Firmware 1.35 is recommended https://github.com/dataq-instruments/Firmware_Upgrade. Earlier version of firmware may not work properly at higher sample rate
 
 Understand the protocol, please refer to  https://www.dataq.com/resources/pdfs/misc/Dataq-Instruments-Protocol.pdf
  
