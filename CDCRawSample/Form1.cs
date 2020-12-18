@@ -8,23 +8,24 @@ namespace CDCRawSample
 {
     public partial class Form1 : Form
     {
-        int portname = 11;
+        int portname = 10;
         static SerialPort serialPort;
         static byte [] ADCBuffer;
         static int headADCBuffer=0;
         static int tailADCBuffer=0;
         Thread readThread;
         static int AvailableBytes=0;
-        static int maxAvailableBytes = 0;
         static string mysrate;
         static string myps;
         static bool acq = false;
 
         public Form1()
         {
+            int i = 0;
             InitializeComponent();
 
             ADCBuffer = new byte [200000];
+            for (i = 0; i < ADCBuffer.Length; i++) ADCBuffer[i] = 0;
             comport.Text = portname.ToString();
 
             readThread = new Thread(Read);
@@ -72,7 +73,6 @@ namespace CDCRawSample
                     try
                     {
                         AvailableBytes = serialPort.BytesToRead;
-                        if (AvailableBytes > maxAvailableBytes) maxAvailableBytes = AvailableBytes;
                         AvailableBytes = AvailableBytes - (AvailableBytes % 2);
                     }
                     catch
@@ -93,14 +93,13 @@ namespace CDCRawSample
                     /*We just dump ALL command echo in this demo*/
                     try
                     {
-                        AvailableBytes = serialPort.BytesToRead;
-                        serialPort.Read(ADCBuffer, 0, AvailableBytes);
+                        serialPort.Read(ADCBuffer, 0, serialPort.BytesToRead);
                     }
                     catch
                     {
-                        AvailableBytes = 0;
                     }
                 }
+                Thread.Sleep(1);
             }
         }
 
@@ -125,7 +124,7 @@ namespace CDCRawSample
             WriteRes("srate "+mysrate+ "\r");
             WriteRes("ps "+ myps+"\r");
 
-            WriteRes("dec 10\r");
+            WriteRes("dec 1\r");
             WriteRes("deca 1\r");
 
             Thread.Sleep(500); //So that we don't need to separate echo with real data
@@ -137,9 +136,10 @@ namespace CDCRawSample
         private void timer1_Tick(object sender, EventArgs e)
         {
             int availablebyte = headADCBuffer-tailADCBuffer;
+
             if (availablebyte < 0) availablebyte = availablebyte + ADCBuffer.Length;
 
-            int availablescan= availablebyte / 2;
+            int availablescan= availablebyte / 2; //two channels = 4 bytes per scan
 
             if (availablescan>0)
             {
@@ -154,9 +154,9 @@ namespace CDCRawSample
                     n = BitConverter.ToInt16(ADCBuffer, tailADCBuffer);
                     tailADCBuffer = tailADCBuffer + 2;
                     PlotData[0, j] = n;
+
                     if (tailADCBuffer >= ADCBuffer.Length) tailADCBuffer = 0;
                 }
-
 
                 axXChart1
                     .Chart(PlotData);
@@ -174,9 +174,9 @@ namespace CDCRawSample
                 WriteRes("stop\r");
                 Thread.Sleep(200);
                 serialPort.Close();
-                readThread.Abort();
             }
             catch { };
+            readThread.Abort();
         }
 
         private void stop_Click(object sender, EventArgs e)
@@ -189,6 +189,11 @@ namespace CDCRawSample
                 serialPort.Close();
             }
             catch { };
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

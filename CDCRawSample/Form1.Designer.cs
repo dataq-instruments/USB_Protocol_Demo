@@ -59,7 +59,7 @@
             this.comport.Name = "comport";
             this.comport.Size = new System.Drawing.Size(28, 20);
             this.comport.TabIndex = 1;
-            this.comport.Text = "11";
+            this.comport.Text = "4";
             // 
             // run
             // 
@@ -82,7 +82,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 50;
+            this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label2
@@ -156,6 +156,7 @@
             this.Name = "Form1";
             this.Text = "Protocol Demo";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.axXChart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
