@@ -34,5 +34,7 @@ To deal with it, you will need to locate the offending .resx files in solution d
  
 **Extra**:
 
- For more info regarding the features of XChart, please refer to http://ultimaserial.com/XChart.html
+ 1) For more info regarding the features of XChart, please refer to http://ultimaserial.com/XChart.html
+ 
+ 2) A good tool to understand/debug the protocol communication is the network protocol analyzer WireShark https://www.wireshark.org/
 
