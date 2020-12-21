@@ -23,7 +23,7 @@
  5)To debug, please read the protocol to find out more, and exam the error codes<br/>
   
  
-![alt text](https://www.dataq.com/resources/repository/rawcdc.gif "ScreenCapture by LICECap")
+![alt text](https://www.dataq.com/resources/repository/rawcdc.gif "ScreenCapture by LICECap") <br/>
 
 When you download and build this project for the first time, good chance you will run in an error like "Couldn't process file form1.resx due to its being in the internet or Restricted zone or having the mark of the web on the file. Remove the mark of the web if you want to process these files."
 
