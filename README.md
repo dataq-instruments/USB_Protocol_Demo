@@ -20,9 +20,7 @@
  2) Select the appropriate srate and use protocol to set up an appropriate ps values <br/>
  3) Click Run to start it<br/>
  4) You can drag the waveform up and down, and use the mouse wheel to zoom in and out <br/>
- 5) To debug, please read the protocol to find out more, and exam the error codes<br/>
-  
- 
+ 5) To debug, please read the protocol to find out more, and exam the error codes<br/> 
 ![alt text](https://www.dataq.com/resources/repository/rawcdc.gif "ScreenCapture by LICECap") 
 
 **Note**
