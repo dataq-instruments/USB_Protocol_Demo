@@ -15,16 +15,17 @@
    
 **Run it**:
 
- 1)Use Windows Device Manager to find out the COM port for your device and enter it to COM Port text box <br/><br/>
+ 1) Use Windows Device Manager to find out the COM port for your device and enter it to COM Port text box <br/><br/>
 ![alt text](https://www.dataq.com/resources/repository/matlab_devicemanager.png)<br/><br/>
- 2)Select the appropriate srate and use protocol to set up an appropriate ps values <br/>
- 3)Click Run to start it<br/>
- 4)You can drag the waveform up and down, and use the mouse wheel to zoom in and out <br/>
- 5)To debug, please read the protocol to find out more, and exam the error codes<br/>
+ 2) Select the appropriate srate and use protocol to set up an appropriate ps values <br/>
+ 3) Click Run to start it<br/>
+ 4) You can drag the waveform up and down, and use the mouse wheel to zoom in and out <br/>
+ 5) To debug, please read the protocol to find out more, and exam the error codes<br/>
   
  
 ![alt text](https://www.dataq.com/resources/repository/rawcdc.gif "ScreenCapture by LICECap") 
 
+**Note**
 When you download and build this project for the first time, good chance you will run in an error like "Couldn't process file form1.resx due to its being in the internet or Restricted zone or having the mark of the web on the file. Remove the mark of the web if you want to process these files."
 
 To deal with it, you will need to locate the offending .resx files in solution directory, right click on it, open the properties and check the option "unblock". Repeat this for all offending .resx files before reloading the project
