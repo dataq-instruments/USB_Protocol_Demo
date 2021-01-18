@@ -110,6 +110,8 @@ namespace CDCRawSample
                 serialPort.WriteLine(s);
             }
             catch (TimeoutException) { }
+            
+            Thread.Sleep(100); /*Since we don't check echo, we need to pause the flow to make sure we have enough time to process the command or race condition will occur*/
         }
 
         public static void Setup()
