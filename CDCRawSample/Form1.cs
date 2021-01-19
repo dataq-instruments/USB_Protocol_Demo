@@ -110,31 +110,27 @@ namespace CDCRawSample
                 serialPort.WriteLine(s);
             }
             catch (TimeoutException) { }
-            
-            Thread.Sleep(100); /*Since we don't check echo, we need to pause the flow to make sure we have enough time to process the command or race condition will occur*/
+            Thread.Sleep(50);
         }
 
         public static void Setup()
         {
+            int i;
             WriteRes("stop\r");
             Thread.Sleep(100);
             serialPort.DiscardInBuffer();
 
             WriteRes("encode 0\r");
-
+            
             WriteRes("slist 0 0\r");
             WriteRes("srate "+mysrate+ "\r");
             WriteRes("ps "+ myps+"\r");
 
-            WriteRes("dec 1\r");
+            WriteRes("dec 5\r");
             WriteRes("deca 1\r");
 
-            //instead of checking every echo, we take an easy route
-            //We know the device will echo something, so we wait until we see something then discard them all
-            while (serialPort.BytesToRead == 0) { }
-            
+            Thread.Sleep(100);
             serialPort.DiscardInBuffer();
-
             WriteRes("start\r");
         }
 
