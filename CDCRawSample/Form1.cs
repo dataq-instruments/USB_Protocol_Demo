@@ -129,7 +129,10 @@ namespace CDCRawSample
             WriteRes("dec 1\r");
             WriteRes("deca 1\r");
 
-            Thread.Sleep(500); //So that we don't need to separate echo with real data
+            //instead of checking every echo, we take an easy route
+            //We know the device will echo something, so we wait until we see something then discard them all
+            while (serialPort.BytesToRead == 0) { }
+            
             serialPort.DiscardInBuffer();
 
             WriteRes("start\r");
